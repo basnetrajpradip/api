@@ -84,7 +84,7 @@ exports.login_post = [
     const refreshToken = jwt.sign({ user: userPayload }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "5m" });
 
     res.cookie("accessToken", accessToken, { maxAge: 60000 });
-    res.cookie("refreshToken", refreshToken, { maxAge: 300000, httpOnly: true, sameSite: "none" });
+    res.cookie("refreshToken", refreshToken, { maxAge: 300000, httpOnly: true, sameSite: "strict" });
     res.status(200).json({ message: "Login successful", user: userPayload });
     return;
   }),
