@@ -81,10 +81,10 @@ exports.login_post = [
     };
 
     const accessToken = jwt.sign({ user: userPayload }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1m" });
-    const refreshToken = jwt.sign({ user: userPayload }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "5m" });
+    const refreshToken = jwt.sign({ user: userPayload }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "7d" });
 
     res.cookie("accessToken", accessToken, { maxAge: 60000 });
-    res.cookie("refreshToken", refreshToken, { maxAge: 300000, httpOnly: true, sameSite: "strict" });
+    res.cookie("refreshToken", refreshToken, { maxAge: 604800000, httpOnly: true, sameSite: "strict" });
     res.status(200).json({ message: "Login successful", user: userPayload });
     return;
   }),
