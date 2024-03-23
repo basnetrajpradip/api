@@ -4,7 +4,7 @@ const TimeAgo = require("javascript-time-ago");
 const en = require("javascript-time-ago/locale/en");
 
 const BlogPostSchema = new Schema({
-  title: { type: String, required: true },
+  title: { type: String, required: trues },
   image: { type: String, required: true },
   content: { type: String, required: true },
   author: { type: Schema.Types.ObjectId, ref: "User", required: true },
