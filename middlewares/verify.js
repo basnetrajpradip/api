@@ -39,7 +39,7 @@ const renewToken = (req, res, next) => {
           isAuthor: decoded.user.isAuthor,
         };
         const accessToken = jwt.sign({ user: userPayload }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1m" });
-        res.cookie("accessToken", accessToken, { maxAge: 60000 });
+        res.cookie("accessToken", accessToken, { maxAge: 60000, sameSite: "none" });
         req.user = userPayload;
         next();
       }
